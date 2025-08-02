@@ -1,0 +1,16 @@
+
+
+CREATE TABLE IF NOT EXISTS PlayerTeamTenure (
+  PlayerID  INT NOT NULL,
+  TeamID    INT NOT NULL,
+  StartDate DATE NOT NULL,
+  EndDate   DATE NULL,
+  PRIMARY KEY (PlayerID, TeamID, StartDate),
+  CONSTRAINT fk_ptt_player
+    FOREIGN KEY (PlayerID) REFERENCES Player(PlayerID)
+      ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_ptt_team
+    FOREIGN KEY (TeamID) REFERENCES Team(TeamID)
+      ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
